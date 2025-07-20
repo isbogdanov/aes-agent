@@ -1,0 +1,311 @@
+01:43:35 in ielts_grader on  multiarm-bandit [⇡!?] via 🅒 base took 4.2s 
+➜ python analyze_log.py results/gemini_flash2.5/detailed/mab_log_openrouter_google_gemini-2.5-flash-preview_500s_0.2eps_1e-05pen_detailP_20250520_012437.csv results/gemini_flash2.5/detailed/grid_log_openrouter_google_gemini-2.5-flash-preview_allessays_detailP_20250520_012541.csv  --plot-dir results/gemini_flash2.5/detailed/plots
+Successfully loaded log file: results/gemini_flash2.5/detailed/mab_log_openrouter_google_gemini-2.5-flash-preview_500s_0.2eps_1e-05pen_detailP_20250520_012437.csv with 500 rows.
+  Inferred Provider: openrouter, Model: google_gemini-2.5-flash-preview
+Successfully loaded log file: results/gemini_flash2.5/detailed/grid_log_openrouter_google_gemini-2.5-flash-preview_allessays_detailP_20250520_012541.csv with 787 rows.
+
+--- MAB Log Analysis: results/gemini_flash2.5/detailed/mab_log_openrouter_google_gemini-2.5-flash-preview_500s_0.2eps_1e-05pen_detailP_20250520_012437.csv ---
+
+Overall MAB Experiment Totals (Actual Operations):
+  MAB Steps Logged:        500
+  Total Prompt Tokens:     2,959,353
+  Total Completion Tokens: 5,091
+  Total Tokens:            2,964,444
+  Total Latency (sum):     1125.16 seconds
+  Total Estimated Cost:    $0.4470
+
+Per-Arm Statistics (from MAB Log):
+Approach (Arm)              Pulls     MAE     QWK AvgShapedRew  AvgPromptTk   AvgComplTk   AvgTotalTk  AvgLatency         AvgCost
+--------------------------------------------------------------------------------------------------------------------------------------------
+Multi-Step (Ex)               332   0.965   0.485      -1.0440      7,849.5         12.0      7,861.5      2.624s      0.00118463
+Single-Step (Ex)               56   1.080   0.438      -1.1044      2,397.6          3.0      2,400.6      0.796s      0.00036144
+Single-Step (NoEx)             45   1.389   0.360      -1.3990      1,003.5          3.0      1,006.5      0.763s      0.00015232
+Multi-Step (NoEx)              67   1.478   0.316      -1.5037      2,595.3         12.0      2,607.3      2.613s      0.00039649
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_arm_pulls.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_avg_shaped_reward.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_mae.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_mae_vs_tokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_mae_vs_cost.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_avg_reward_over_time.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_cumulative_total_tokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_cumulative_reward_per_arm.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_projected_total_reward.png
+Saved plot: results/gemini_flash2.5/detailed/plots/mab_avg_reward_over_time.png
+
+--- Grid Search Log Analysis: results/gemini_flash2.5/detailed/grid_log_openrouter_google_gemini-2.5-flash-preview_allessays_detailP_20250520_012541.csv ---
+Warning: Expected column 'Essay_Agg_Latency' not found in Grid log.
+
+Final Mean Absolute Errors (MAE) per Approach:
+Multi-Step (Ex)                MAE: 0.961
+Multi-Step (Ex)                QWK: 0.497
+Multi-Step (NoEx)              MAE: 1.416
+Multi-Step (NoEx)              QWK: 0.343
+Single-Step (NoEx)             MAE: 1.286
+Single-Step (NoEx)             QWK: 0.334
+Single-Step (Ex)               MAE: 1.147
+Single-Step (Ex)               QWK: 0.390
+
+Average Usage Statistics per Approach (from log file):
+Approach                           MAE     QWK  AvgPromptTk   AvgComplTk   AvgTotalTk  AvgLatency         AvgCost
+-------------------------------------------------------------------------------------------------------------------
+Multi-Step (Ex)                  0.961   0.497      7,860.7         12.0      7,872.7      2.539s      0.00118630
+Multi-Step (NoEx)                1.416   0.343      2,588.7         12.0      2,600.7      2.328s      0.00039550
+Single-Step (NoEx)               1.286   0.334      1,000.7          3.0      1,003.7      0.584s      0.00015190
+Single-Step (Ex)                 1.147   0.390      2,389.7          3.0      2,392.7      0.633s      0.00036025
+
+Overall Grid Search Usage Statistics (Sum of per-essay totals from log):
+  Essays Processed:        787
+  Total Prompt Tokens:     10,891,801
+  Total Completion Tokens: 23,610
+  Total Tokens:            10,915,411
+  Total Latency (sum):     4788.30 seconds
+  Total Estimated Cost:    $1.6479
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_avg_mae.png
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_avg_total_tokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_avg_estimated_cost.png
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_avg_latency.png
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_error_distribution_boxplot.png
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_mae_vs_tokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_mae_vs_cost.png
+Saved plot: results/gemini_flash2.5/detailed/plots/grid_cumulative_total_tokens.png
+
+--- MAB vs. Grid Search Comparison ---
+
+DEBUG: mab_summary at start of analyze_comparison:
+      ChosenRecipe  PullCount       MAE       QWK  AvgShapedReward  AvgPromptTokens  AvgCompletionTokens  AvgTotalTokens  AvgLatency  AvgEstimatedCost
+0     MultiStep+Ex        332  0.965361  0.484549        -1.043973      7849.542169                 12.0     7861.542169    2.624111          0.001185
+2    SingleStep+Ex         56  1.080357  0.437519        -1.104364      2397.625000                  3.0     2400.625000    0.795679          0.000361
+3  SingleStep-NoEx         45  1.388889  0.360091        -1.398953      1003.466667                  3.0     1006.466667    0.762791          0.000152
+1   MultiStep-NoEx         67  1.477612  0.316016        -1.503688      2595.253731                 12.0     2607.253731    2.612988          0.000396
+MAB Summary Index: [None]
+MAB Summary Columns: ['ChosenRecipe', 'PullCount', 'MAE', 'QWK', 'AvgShapedReward', 'AvgPromptTokens', 'AvgCompletionTokens', 'AvgTotalTokens', 'AvgLatency', 'AvgEstimatedCost']
+
+DEBUG: grid_summary at start of analyze_comparison:
+                         MAE       QWK  AvgPromptTokens  AvgCompletionTokens  AvgTotalTokens  AvgLatency  AvgEstimatedCost
+Approach                                                                                                                  
+Multi-Step (Ex)     0.960610  0.497302      7860.658196                 12.0     7872.658196    2.538875          0.001186
+Multi-Step (NoEx)   1.415502  0.342561      2588.658196                 12.0     2600.658196    2.328268          0.000395
+Single-Step (NoEx)  1.285896  0.334302      1000.664549                  3.0     1003.664549    0.583631          0.000152
+Single-Step (Ex)    1.146760  0.389740      2389.664549                  3.0     2392.664549    0.633469          0.000360
+Grid Summary Index: ['Approach']
+Grid Summary Columns: ['MAE', 'QWK', 'AvgPromptTokens', 'AvgCompletionTokens', 'AvgTotalTokens', 'AvgLatency', 'AvgEstimatedCost']
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_mae.png
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_qwk.png
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_avgtotaltokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_avgestimatedcost.png
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_avglatency.png
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_accuracy_performance.png
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_qwk.png
+Saved plot: results/gemini_flash2.5/detailed/plots/overall_comparison_totalestimatedcost.png
+Saved plot: results/gemini_flash2.5/detailed/plots/overall_comparison_totaltokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/overall_comparison_totalprompttokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/overall_comparison_totalcompletiontokens.png
+Saved plot: results/gemini_flash2.5/detailed/plots/comparison_cumulative_tokens_single_y.png
+
+01:45:35 in ielts_grader on  multiarm-bandit [⇡!?] via 🅒 base took 4.0s 
+➜ python analyze_log.py results/llama4/detailed/mab_log_openrouter_meta-llama_llama-4-maverick_500s_0.2eps_1e-05pen_detailP_20250520_013048.csv results/llama4/detailed/grid_log_openrouter_meta-llama_llama-4-maverick_allessays_detailP_20250520_013620.csv --plot-dir results/llama4/detailed/plot
+Successfully loaded log file: results/llama4/detailed/mab_log_openrouter_meta-llama_llama-4-maverick_500s_0.2eps_1e-05pen_detailP_20250520_013048.csv with 500 rows.
+  Inferred Provider: openrouter, Model: meta-llama_llama-4-maverick
+Successfully loaded log file: results/llama4/detailed/grid_log_openrouter_meta-llama_llama-4-maverick_allessays_detailP_20250520_013620.csv with 787 rows.
+
+--- MAB Log Analysis: results/llama4/detailed/mab_log_openrouter_meta-llama_llama-4-maverick_500s_0.2eps_1e-05pen_detailP_20250520_013048.csv ---
+
+Overall MAB Experiment Totals (Actual Operations):
+  MAB Steps Logged:        500
+  Total Prompt Tokens:     2,762,358
+  Total Completion Tokens: 6,474
+  Total Tokens:            2,768,832
+  Total Latency (sum):     3592.86 seconds
+  Total Estimated Cost:    $0.4182
+
+Per-Arm Statistics (from MAB Log):
+Approach (Arm)              Pulls     MAE     QWK AvgShapedRew  AvgPromptTk   AvgComplTk   AvgTotalTk  AvgLatency         AvgCost
+--------------------------------------------------------------------------------------------------------------------------------------------
+Multi-Step (Ex)               306   0.747   0.554      -0.8246      7,766.4         15.9      7,782.3      8.580s      0.00117452
+Single-Step (Ex)               65   0.831   0.369      -0.8542      2,343.9          4.0      2,347.9      2.367s      0.00035396
+Single-Step (NoEx)             60   0.867   0.283      -0.8763        963.0          4.0        966.9      3.101s      0.00014683
+Multi-Step (NoEx)              69   1.290   0.438      -1.3155      2,546.6         15.9      2,562.5      9.096s      0.00039154
+Saved plot: results/llama4/detailed/plot/mab_arm_pulls.png
+Saved plot: results/llama4/detailed/plot/mab_avg_shaped_reward.png
+Saved plot: results/llama4/detailed/plot/mab_mae.png
+Saved plot: results/llama4/detailed/plot/mab_mae_vs_tokens.png
+Saved plot: results/llama4/detailed/plot/mab_mae_vs_cost.png
+Saved plot: results/llama4/detailed/plot/mab_avg_reward_over_time.png
+Saved plot: results/llama4/detailed/plot/mab_cumulative_total_tokens.png
+Saved plot: results/llama4/detailed/plot/mab_cumulative_reward_per_arm.png
+Saved plot: results/llama4/detailed/plot/mab_projected_total_reward.png
+Saved plot: results/llama4/detailed/plot/mab_avg_reward_over_time.png
+
+--- Grid Search Log Analysis: results/llama4/detailed/grid_log_openrouter_meta-llama_llama-4-maverick_allessays_detailP_20250520_013620.csv ---
+Warning: Expected column 'Essay_Agg_Latency' not found in Grid log.
+
+Final Mean Absolute Errors (MAE) per Approach:
+Multi-Step (Ex)                MAE: 0.778
+Multi-Step (Ex)                QWK: 0.549
+Multi-Step (NoEx)              MAE: 1.221
+Multi-Step (NoEx)              QWK: 0.398
+Single-Step (NoEx)             MAE: 0.979
+Single-Step (NoEx)             QWK: 0.335
+Single-Step (Ex)               MAE: 0.861
+Single-Step (Ex)               QWK: 0.348
+
+Average Usage Statistics per Approach (from log file):
+Approach                           MAE     QWK  AvgPromptTk   AvgComplTk   AvgTotalTk  AvgLatency         AvgCost
+-------------------------------------------------------------------------------------------------------------------
+Multi-Step (Ex)                  0.778   0.549      7,746.0         16.0      7,762.0      3.507s      0.00000000
+Multi-Step (NoEx)                1.221   0.398      2,560.2         15.9      2,576.1      3.383s      0.00000000
+Single-Step (NoEx)               0.979   0.335        967.1          4.0        971.1      0.797s      0.00000000
+Single-Step (Ex)                 0.861   0.348      2,332.7          4.0      2,336.7      0.816s      0.00000000
+
+Overall Grid Search Usage Statistics (Sum of per-essay totals from log):
+  Essays Processed:        787
+  Total Prompt Tokens:     10,707,926
+  Total Completion Tokens: 31,399
+  Total Tokens:            10,739,325
+  Total Latency (sum):     6691.70 seconds
+  Total Estimated Cost:    $0.0000
+Saved plot: results/llama4/detailed/plot/grid_avg_mae.png
+Saved plot: results/llama4/detailed/plot/grid_avg_total_tokens.png
+Saved plot: results/llama4/detailed/plot/grid_avg_estimated_cost.png
+Saved plot: results/llama4/detailed/plot/grid_avg_latency.png
+Saved plot: results/llama4/detailed/plot/grid_error_distribution_boxplot.png
+Saved plot: results/llama4/detailed/plot/grid_mae_vs_tokens.png
+Saved plot: results/llama4/detailed/plot/grid_mae_vs_cost.png
+Saved plot: results/llama4/detailed/plot/grid_cumulative_total_tokens.png
+
+--- MAB vs. Grid Search Comparison ---
+
+DEBUG: mab_summary at start of analyze_comparison:
+      ChosenRecipe  PullCount       MAE       QWK  AvgShapedReward  AvgPromptTokens  AvgCompletionTokens  AvgTotalTokens  AvgLatency  AvgEstimatedCost
+0     MultiStep+Ex        306  0.746732  0.553988        -0.824556      7766.366013            15.947712     7782.313725    8.579724          0.001175
+2    SingleStep+Ex         65  0.830769  0.368813        -0.854243      2343.938462             3.953846     2347.892308    2.366768          0.000354
+3  SingleStep-NoEx         60  0.866667  0.282712        -0.876340       962.950000             3.983333      966.933333    3.100533          0.000147
+1   MultiStep-NoEx         69  1.289855  0.438073        -1.315484      2546.623188            15.913043     2562.536232    9.095536          0.000392
+MAB Summary Index: [None]
+MAB Summary Columns: ['ChosenRecipe', 'PullCount', 'MAE', 'QWK', 'AvgShapedReward', 'AvgPromptTokens', 'AvgCompletionTokens', 'AvgTotalTokens', 'AvgLatency', 'AvgEstimatedCost']
+
+DEBUG: grid_summary at start of analyze_comparison:
+                         MAE       QWK  AvgPromptTokens  AvgCompletionTokens  AvgTotalTokens  AvgLatency  AvgEstimatedCost
+Approach                                                                                                                  
+Multi-Step (Ex)     0.778061  0.548851      7746.016518            15.952986     7761.969504    3.506901               0.0
+Multi-Step (NoEx)   1.220945  0.397928      2560.179161            15.945362     2576.124524    3.383365               0.0
+Single-Step (NoEx)  0.979008  0.335381       967.101652             4.000000      971.101652    0.796818               0.0
+Single-Step (Ex)    0.860864  0.347549      2332.707751             3.998729     2336.706480    0.815716               0.0
+Grid Summary Index: ['Approach']
+Grid Summary Columns: ['MAE', 'QWK', 'AvgPromptTokens', 'AvgCompletionTokens', 'AvgTotalTokens', 'AvgLatency', 'AvgEstimatedCost']
+Saved plot: results/llama4/detailed/plot/comparison_mae.png
+Saved plot: results/llama4/detailed/plot/comparison_qwk.png
+Saved plot: results/llama4/detailed/plot/comparison_avgtotaltokens.png
+Saved plot: results/llama4/detailed/plot/comparison_avgestimatedcost.png
+Saved plot: results/llama4/detailed/plot/comparison_avglatency.png
+Saved plot: results/llama4/detailed/plot/comparison_accuracy_performance.png
+Saved plot: results/llama4/detailed/plot/comparison_qwk.png
+Saved plot: results/llama4/detailed/plot/overall_comparison_totalestimatedcost.png
+Saved plot: results/llama4/detailed/plot/overall_comparison_totaltokens.png
+Saved plot: results/llama4/detailed/plot/overall_comparison_totalprompttokens.png
+Saved plot: results/llama4/detailed/plot/overall_comparison_totalcompletiontokens.png
+Saved plot: results/llama4/detailed/plot/comparison_cumulative_tokens_single_y.png
+
+01:47:36 in ielts_grader on  multiarm-bandit [⇡!?] via 🅒 base took 3.3s 
+➜ python analyze_log.py results/llama4/basic/mab_log_openrouter_meta-llama_llama-4-maverick_500s_0.2eps_1e-05pen_basicP_20250520_013355.csv results/llama4/basic/grid_log_openrouter_meta-llama_llama-4-maverick_allessays_basicP_20250520_013029.csv --plot-dir results/llama4/basic/plot
+Successfully loaded log file: results/llama4/basic/mab_log_openrouter_meta-llama_llama-4-maverick_500s_0.2eps_1e-05pen_basicP_20250520_013355.csv with 500 rows.
+  Inferred Provider: openrouter, Model: meta-llama_llama-4-maverick
+Successfully loaded log file: results/llama4/basic/grid_log_openrouter_meta-llama_llama-4-maverick_allessays_basicP_20250520_013029.csv with 787 rows.
+
+--- MAB Log Analysis: results/llama4/basic/mab_log_openrouter_meta-llama_llama-4-maverick_500s_0.2eps_1e-05pen_basicP_20250520_013355.csv ---
+
+Overall MAB Experiment Totals (Actual Operations):
+  MAB Steps Logged:        500
+  Total Prompt Tokens:     1,352,895
+  Total Completion Tokens: 3,689
+  Total Tokens:            1,356,584
+  Total Latency (sum):     1644.89 seconds
+  Total Estimated Cost:    $0.2051
+
+Per-Arm Statistics (from MAB Log):
+Approach (Arm)              Pulls     MAE     QWK AvgShapedRew  AvgPromptTk   AvgComplTk   AvgTotalTk  AvgLatency         AvgCost
+--------------------------------------------------------------------------------------------------------------------------------------------
+Single-Step (Ex)              307   0.728   0.443      -0.7473      1,921.5          4.0      1,925.5      2.140s      0.00029061
+Multi-Step (Ex)                82   0.877   0.471      -1.0613      7,336.4         15.9      7,352.3      7.016s      0.00110998
+Single-Step (NoEx)             50   1.070   0.387      -1.0757        568.2          4.0        572.2      1.270s      0.00008763
+Multi-Step (NoEx)              61   1.189   0.395      -1.2105      2,180.2         15.9      2,196.1      5.721s      0.00033657
+Saved plot: results/llama4/basic/plot/mab_arm_pulls.png
+Saved plot: results/llama4/basic/plot/mab_avg_shaped_reward.png
+Saved plot: results/llama4/basic/plot/mab_mae.png
+Saved plot: results/llama4/basic/plot/mab_mae_vs_tokens.png
+Saved plot: results/llama4/basic/plot/mab_mae_vs_cost.png
+Saved plot: results/llama4/basic/plot/mab_avg_reward_over_time.png
+Saved plot: results/llama4/basic/plot/mab_cumulative_total_tokens.png
+Saved plot: results/llama4/basic/plot/mab_cumulative_reward_per_arm.png
+Saved plot: results/llama4/basic/plot/mab_projected_total_reward.png
+Saved plot: results/llama4/basic/plot/mab_avg_reward_over_time.png
+
+--- Grid Search Log Analysis: results/llama4/basic/grid_log_openrouter_meta-llama_llama-4-maverick_allessays_basicP_20250520_013029.csv ---
+Warning: Expected column 'Essay_Agg_Latency' not found in Grid log.
+
+Final Mean Absolute Errors (MAE) per Approach:
+Multi-Step (Ex)                MAE: 0.846
+Multi-Step (Ex)                QWK: 0.496
+Multi-Step (NoEx)              MAE: 1.164
+Multi-Step (NoEx)              QWK: 0.388
+Single-Step (NoEx)             MAE: 1.048
+Single-Step (NoEx)             QWK: 0.395
+Single-Step (Ex)               MAE: 0.757
+Single-Step (Ex)               QWK: 0.483
+
+Average Usage Statistics per Approach (from log file):
+Approach                           MAE     QWK  AvgPromptTk   AvgComplTk   AvgTotalTk  AvgLatency         AvgCost
+-------------------------------------------------------------------------------------------------------------------
+Multi-Step (Ex)                  0.846   0.496      7,310.2         15.9      7,326.1      8.275s      0.00000000
+Multi-Step (NoEx)                1.164   0.388      2,171.7         15.9      2,187.6      7.681s      0.00000000
+Single-Step (NoEx)               1.048   0.395        571.1          4.0        575.1      1.904s      0.00000000
+Single-Step (Ex)                 0.757   0.483      1,917.6          4.0      1,921.5      1.835s      0.00000000
+
+Overall Grid Search Usage Statistics (Sum of per-essay totals from log):
+  Essays Processed:        787
+  Total Prompt Tokens:     9,420,810
+  Total Completion Tokens: 31,289
+  Total Tokens:            9,452,099
+  Total Latency (sum):     15500.50 seconds
+  Total Estimated Cost:    $0.0000
+Saved plot: results/llama4/basic/plot/grid_avg_mae.png
+Saved plot: results/llama4/basic/plot/grid_avg_total_tokens.png
+Saved plot: results/llama4/basic/plot/grid_avg_estimated_cost.png
+Saved plot: results/llama4/basic/plot/grid_avg_latency.png
+Saved plot: results/llama4/basic/plot/grid_error_distribution_boxplot.png
+Saved plot: results/llama4/basic/plot/grid_mae_vs_tokens.png
+Saved plot: results/llama4/basic/plot/grid_mae_vs_cost.png
+Saved plot: results/llama4/basic/plot/grid_cumulative_total_tokens.png
+
+--- MAB vs. Grid Search Comparison ---
+
+DEBUG: mab_summary at start of analyze_comparison:
+      ChosenRecipe  PullCount       MAE       QWK  AvgShapedReward  AvgPromptTokens  AvgCompletionTokens  AvgTotalTokens  AvgLatency  AvgEstimatedCost
+2    SingleStep+Ex        307  0.728013  0.443499        -0.747272      1921.511401             3.973941     1925.485342    2.140476          0.000291
+0     MultiStep+Ex         82  0.876543  0.470588        -1.061332      7336.426829            15.853659     7352.280488    7.015823          0.001110
+3  SingleStep-NoEx         50  1.070000  0.386839        -1.075718       568.180000             4.000000      572.180000    1.270178          0.000088
+1   MultiStep-NoEx         61  1.188525  0.394854        -1.210492      2180.245902            15.885246     2196.131148    5.720579          0.000337
+MAB Summary Index: [None]
+MAB Summary Columns: ['ChosenRecipe', 'PullCount', 'MAE', 'QWK', 'AvgShapedReward', 'AvgPromptTokens', 'AvgCompletionTokens', 'AvgTotalTokens', 'AvgLatency', 'AvgEstimatedCost']
+
+DEBUG: grid_summary at start of analyze_comparison:
+                         MAE       QWK  AvgPromptTokens  AvgCompletionTokens  AvgTotalTokens  AvgLatency  AvgEstimatedCost
+Approach                                                                                                                  
+Multi-Step (Ex)     0.846301  0.496089      7310.189327            15.912325     7326.101652    8.274977               0.0
+Multi-Step (NoEx)   1.163683  0.388498      2171.695044            15.891995     2187.587039    7.681443               0.0
+Single-Step (NoEx)  1.047832  0.394748       571.092757             3.977128      575.069886    1.904231               0.0
+Single-Step (Ex)    0.756997  0.482642      1917.556544             3.975858     1921.532402    1.835030               0.0
+Grid Summary Index: ['Approach']
+Grid Summary Columns: ['MAE', 'QWK', 'AvgPromptTokens', 'AvgCompletionTokens', 'AvgTotalTokens', 'AvgLatency', 'AvgEstimatedCost']
+Saved plot: results/llama4/basic/plot/comparison_mae.png
+Saved plot: results/llama4/basic/plot/comparison_qwk.png
+Saved plot: results/llama4/basic/plot/comparison_avgtotaltokens.png
+Saved plot: results/llama4/basic/plot/comparison_avgestimatedcost.png
+Saved plot: results/llama4/basic/plot/comparison_avglatency.png
+Saved plot: results/llama4/basic/plot/comparison_accuracy_performance.png
+Saved plot: results/llama4/basic/plot/comparison_qwk.png
+Saved plot: results/llama4/basic/plot/overall_comparison_totalestimatedcost.png
+Saved plot: results/llama4/basic/plot/overall_comparison_totaltokens.png
+Saved plot: results/llama4/basic/plot/overall_comparison_totalprompttokens.png
+Saved plot: results/llama4/basic/plot/overall_comparison_totalcompletiontokens.png
+Saved plot: results/llama4/basic/plot/comparison_cumulative_tokens_single_y.png

@@ -1,0 +1,8 @@
+pandas
+openai
+requests
+groq
+scikit-learn
+matplotlib
+seaborn
+numpy

@@ -1,0 +1,3 @@
+[submodule "utils/llm_connector"]
+	path = utils/llm_connector
+	url = https://github.com/isbogdanov/llm_connector
