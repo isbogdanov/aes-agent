@@ -48,12 +48,27 @@ The project uses the `ielts_writing_dataset_task2.csv` file, which contains essa
 
 ### Prerequisites
 
-- Python 3.8+
-- Install dependencies:
+- Python 3.11+
+
+- **Cloning the Repository**: This project includes `llm_connector` as a git submodule. 
+  
+  To clone the repository and initialize the submodule at the same time, run:
+  ```bash
+  git clone --recurse-submodules <repository-url>
+  cd <repository-name>
+  ```
+  
+  If you have already cloned the repository without the submodules, you can initialize them from the project root:
+  ```bash
+  git submodule init
+  git submodule update
+  ```
+
+- **Install Dependencies**:
   ```bash
   pip install -r requirements.txt
   ```
-- Configure the LLM connector by copying `utils/llm_connector/connector/connector_settings.py.template` to `utils/llm_connector/connector/connector_settings.py` and adding your API keys.
+- **Configure the LLM Connector**: Copy `utils/llm_connector/connector/connector_settings.py.template` to `utils/llm_connector/connector/connector_settings.py` and add your API keys.
 
 ### Running Experiments
 
